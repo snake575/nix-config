@@ -1,4 +1,4 @@
-# home-manager configuration
+# Nix configurations
 
 ## Setup
 
@@ -11,11 +11,19 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 Clone this repo to `~/.config/home-manager`
 
 ```bash
-nix run nixpkgs#git -- git clone https://github.com/snake575/home-manager.git $HOME/.config/home-manager
+nix run nixpkgs#git -- clone https://github.com/snake575/nix-config.git $HOME/.config/home-manager
 ```
 
-Enable Home Manager
+Enable [Home Manager](https://github.com/nix-community/home-manager)
 
 ```bash
 nix run nixpkgs#home-manager -- switch
+```
+
+Change the default shell to `zsh`
+
+```bash
+echo $(which zsh) | sudo tee -a /etc/shells
+
+chsh -s $(which zsh)
 ```
