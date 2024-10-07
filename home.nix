@@ -8,6 +8,7 @@
     ./apps/direnv.nix
     ./apps/bun.nix
     ./apps/btop.nix
+    ./apps/lsd.nix
   ];
 
   # Let Home Manager install and manage itself.
