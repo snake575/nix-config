@@ -28,6 +28,9 @@
     hello
     neofetch
 
+    nodejs_22
+    python3
+
     # nix language server & formmatter
     nixd
     nixfmt-rfc-style
