@@ -28,7 +28,7 @@
     hello
     neofetch
 
-    nodejs_22
+    nodejs
     python3
 
     # nix language server & formmatter
