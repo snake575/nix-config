@@ -15,12 +15,10 @@
         autocrlf = "input";
         filemode = false;
         eol = "lf";
-        sshCommand = "ssh.exe";
       };
 
       gpg = {
         format = "ssh";
-        ssh.program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl";
       };
 
       push = {
