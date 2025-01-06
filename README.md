@@ -12,6 +12,8 @@ Clone this repo to `~/.config/home-manager`
 
 ```bash
 nix run nixpkgs#git -- clone https://github.com/snake575/nix-config.git $HOME/.config/home-manager
+
+
 ```
 
 Enable [Home Manager](https://github.com/nix-community/home-manager)
@@ -25,5 +27,11 @@ Change the default shell to `zsh`
 ```bash
 echo $(which zsh) | sudo tee -a /etc/shells
 
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $(whoami)
+```
+
+Copy Ghostty terminfo to a remote machine
+
+```bash
+infocmp -x | ssh YOUR-SERVER -- tic -x -
 ```
