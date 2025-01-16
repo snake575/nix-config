@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -14,13 +14,10 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Make Home Manager work better on distributions other than NixOS.
-  targets.genericLinux.enable = true;
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "snake575";
-  home.homeDirectory = "/home/snake575";
+  home.homeDirectory = lib.mkDefault "/home/snake575";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -91,7 +88,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  # 
+  #
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   # https://nixos.org/manual/nixos/unstable/release-notes.html
   home.stateVersion = "24.05";

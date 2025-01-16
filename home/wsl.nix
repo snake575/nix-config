@@ -1,10 +1,9 @@
 { ... }:
+
 {
   imports = [
-    ./default.nix
+    ./linux.nix
   ];
-
-  targets.genericLinux.enable = true;
 
   programs.git = {
     extraConfig = {

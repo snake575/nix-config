@@ -32,7 +32,7 @@
       homeConfigurations = {
         snake575 = lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
-          modules = [ ./home ];
+          modules = [ ./home/linux.nix ];
         };
         "snake575@NOMAD-X670" = lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
