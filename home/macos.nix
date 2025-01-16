@@ -1,9 +1,5 @@
 { ... }:
 
-let
-  onePasswordPath = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
-in
-
 {
   imports = [
     ./default.nix
@@ -13,7 +9,7 @@ in
   programs.git = {
     extraConfig = {
       core = {
-        sshCommand = "ssh.exe";
+        sshCommand = "ssh";
       };
       commit = {
         gpgsign = true;
@@ -24,16 +20,15 @@ in
   programs.ssh = {
     enable = true;
     extraConfig = ''
-      Host *
-          IdentityAgent ${onePasswordPath}
+      IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     '';
   };
 
   home.homeDirectory = "/Users/snake575";
 
-  home.sessionVariables = {
-    SSH_AUTH_SOCK = "${onePasswordPath}";
-  };
+  programs.zsh.initExtra = ''
+    export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+  '';
 
   # home.packages = with pkgs; [
   #   openjdk
