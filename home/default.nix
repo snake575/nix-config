@@ -5,6 +5,7 @@
     # ./apps/bash.nix
     ./apps/zsh.nix
     ./apps/git.nix
+    ./apps/gh.nix
     ./apps/direnv.nix
     ./apps/bun.nix
     ./apps/btop.nix
@@ -27,6 +28,8 @@
 
     nodejs
     python3
+    libpqxx
+    _7zz
 
     # nix language server & formmatter
     nixd
