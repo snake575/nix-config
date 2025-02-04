@@ -10,6 +10,7 @@
     ./apps/bun.nix
     ./apps/btop.nix
     ./apps/lsd.nix
+    ./apps/poetry.nix
   ];
 
   # Let Home Manager install and manage itself.
