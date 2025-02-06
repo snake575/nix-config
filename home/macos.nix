@@ -3,7 +3,7 @@
 {
   imports = [
     ./default.nix
-    # ./apps/ghostty.nix # ! ghostty-1.0.1 is marked as broken
+    # ./apps/ghostty.nix # ! ghostty-1.1.0 is marked as broken
   ];
 
   programs.git = {
