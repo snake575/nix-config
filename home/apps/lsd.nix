@@ -1,6 +1,7 @@
 {
   programs.lsd = {
     enable = true;
-    enableAliases = true;
+    enableBashIntegration = false;
+    enableZshIntegration = true;
   };
 }
