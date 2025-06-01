@@ -29,6 +29,7 @@
 
     nodejs
     python3
+    pnpm
     libpqxx
     _7zz
 
