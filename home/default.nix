@@ -32,6 +32,7 @@
     pnpm
     libpqxx
     _7zz
+    watchman
 
     # nix language server & formmatter
     nixd
