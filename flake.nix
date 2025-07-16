@@ -38,7 +38,7 @@
           pkgs = pkgsFor.x86_64-linux;
           modules = [ ./home/wsl.nix ];
         };
-        "snake575@nomad-macbook" = lib.homeManagerConfiguration {
+        "snake575@NOMAD-MacBook" = lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-darwin;
           modules = [ ./home/macos.nix ];
         };
