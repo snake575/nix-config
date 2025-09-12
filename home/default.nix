@@ -32,6 +32,7 @@
     pnpm
     libpqxx
     _7zz
+    dnsutils
 
     # nix language server & formmatter
     nixd
