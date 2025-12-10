@@ -27,7 +27,7 @@
     hello
     neofetch
 
-    nodejs
+    nodejs_24
     python3
     pnpm
     libpqxx
