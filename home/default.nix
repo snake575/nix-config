@@ -11,6 +11,7 @@
     ./apps/btop.nix
     ./apps/lsd.nix
     ./apps/poetry.nix
+    ./apps/nh.nix
   ];
 
   # Let Home Manager install and manage itself.
