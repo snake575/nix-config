@@ -34,6 +34,7 @@
     libpqxx
     _7zz
     dnsutils
+    claude-code
 
     # nix language server & formmatter
     nixd
