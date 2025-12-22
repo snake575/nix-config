@@ -15,7 +15,8 @@
     enableDefaultConfig = false; # don't apply default ssh_config values
     matchBlocks."*" = {
       host = "*";
-      identityAgent = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+      # Needs quoting because the path contains a space ("Group Containers").
+      identityAgent = ''"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
     };
   };
 
