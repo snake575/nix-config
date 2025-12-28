@@ -34,6 +34,7 @@
 
     # Tools
     claude-code
+    claude-monitor
     nixd
     nixfmt-rfc-style
   ];
