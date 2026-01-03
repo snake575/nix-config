@@ -28,6 +28,7 @@
 
     # Development
     nodejs_24
+    bun
     pnpm
     python3
     libpqxx
@@ -35,8 +36,19 @@
     # Tools
     claude-code
     claude-monitor
+    happy-coder
     nixd
     nixfmt-rfc-style
+  ];
+
+  # BUN_INSTALL sets the root directory for bun global packages (~/.bun)
+  # Required for `bun install -g` to work on NixOS since the store is read-only
+  home.sessionVariables = {
+    BUN_INSTALL = "$HOME/.bun";
+  };
+
+  home.sessionPath = [
+    "$HOME/.bun/bin" # bun global packages
   ];
 
   home.shellAliases = {

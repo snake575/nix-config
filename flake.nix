@@ -27,7 +27,12 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [ claude-code.overlays.default ];
+          overlays = [
+            claude-code.overlays.default
+            (final: prev: {
+              happy-coder = final.callPackage ./packages/happy-coder.nix { };
+            })
+          ];
         }
       );
     in
