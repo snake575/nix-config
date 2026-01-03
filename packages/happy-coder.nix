@@ -1,5 +1,7 @@
 # Based on nixpkgs package definition:
 # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/ha/happy-coder/package.nix
+#
+# To upgrade: update version, set both hashes to "", run switch to get correct hashes from errors
 {
   lib,
   stdenv,
