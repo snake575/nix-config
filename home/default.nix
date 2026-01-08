@@ -36,6 +36,7 @@
     # Tools
     # claude-code # ? updates too frequently to keep in Nix
     claude-monitor
+    amp-cli
     happy-coder
     nixd
     nixfmt-rfc-style
