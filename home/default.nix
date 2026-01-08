@@ -39,7 +39,7 @@
     amp-cli
     happy-coder
     nixd
-    nixfmt-rfc-style
+    nixfmt
   ];
 
   # BUN_INSTALL sets the root directory for bun global packages (~/.bun)
