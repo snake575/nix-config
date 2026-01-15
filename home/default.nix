@@ -34,8 +34,6 @@
     libpqxx
 
     # Tools
-    # claude-code # ? updates too frequently to keep in Nix
-    happy-coder
     nixd
     nixfmt
   ];

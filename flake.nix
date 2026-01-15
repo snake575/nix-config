@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
-    claude-code.url = "github:sadjow/claude-code-nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +15,6 @@
       nixpkgs,
       home-manager,
       systems,
-      claude-code,
       ...
     }:
     let
@@ -27,12 +25,6 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [
-            claude-code.overlays.default
-            (final: prev: {
-              happy-coder = final.callPackage ./packages/happy-coder.nix { };
-            })
-          ];
         }
       );
     in
