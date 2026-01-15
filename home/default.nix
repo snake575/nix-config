@@ -28,8 +28,8 @@
 
     # Development
     nodejs_24
-    bun
     pnpm
+    # bun -> added from ./apps/bun.nix
     python3
     libpqxx
 

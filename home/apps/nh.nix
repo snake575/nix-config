@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   # nh: nix helper CLI
@@ -7,6 +7,6 @@
     # keep config ready to re-enable once upstream fixes sudo/env PATH handling
     clean.enable = true;
     clean.extraArgs = "--keep-since 7d --keep 3";
-    homeFlake = "/home/snake575/.config/home-manager";
+    flake = "${config.home.homeDirectory}/.config/home-manager";
   };
 }

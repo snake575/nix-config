@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   # WSL-specific configuration
@@ -19,7 +19,8 @@
   };
 
   # Use Windows SSH tools to share agent with Windows host
-  home.shellAliases = {
+  # Use lib.mkAfter to merge with base aliases instead of replacing them
+  home.shellAliases = lib.mkAfter {
     ssh = "ssh.exe";
     ssh-add = "ssh-add.exe";
   };
