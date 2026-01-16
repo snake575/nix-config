@@ -46,6 +46,7 @@
 
   home.sessionPath = [
     "$HOME/.bun/bin" # bun global packages
+    "$HOME/.local/bin" # user-local binaries (e.g. Claude Code installer)
   ];
 
   home.shellAliases = {
