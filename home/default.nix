@@ -39,13 +39,16 @@
   ];
 
   # BUN_INSTALL sets the root directory for bun global packages (~/.bun)
-  # Required for `bun install -g` to work on NixOS since the store is read-only
+  # PNPM_HOME sets the root directory for pnpm global packages
+  # Required for global installs to work on NixOS since the store is read-only
   home.sessionVariables = {
     BUN_INSTALL = "$HOME/.bun";
+    PNPM_HOME = "$HOME/.local/share/pnpm";
   };
 
   home.sessionPath = [
     "$HOME/.bun/bin" # bun global packages
+    "$HOME/.local/share/pnpm" # pnpm global packages
     "$HOME/.local/bin" # user-local binaries (e.g. Claude Code installer)
   ];
 
