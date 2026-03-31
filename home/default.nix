@@ -22,7 +22,7 @@
 
   home.packages = with pkgs; [
     # System
-    neofetch
+    fastfetch
     _7zz
     dnsutils
 
