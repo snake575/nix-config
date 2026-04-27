@@ -1,9 +1,14 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   # WSL-specific configuration
   # Uses Windows SSH and 1Password for seamless key management
   imports = [ ./linux.nix ];
+
+  home.packages = with pkgs; [
+    # Codex sandboxing on WSL2 needs bwrap available on PATH.
+    bubblewrap
+  ];
 
   programs.git = {
     settings = {
