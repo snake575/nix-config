@@ -36,6 +36,7 @@
     # Tools
     ripgrep
     fd
+    jq
     yq
     nixd
     nixfmt
