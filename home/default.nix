@@ -34,6 +34,9 @@
     libpqxx
 
     # Tools
+    ripgrep
+    fd
+    yq
     nixd
     nixfmt
   ];
