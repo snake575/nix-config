@@ -31,6 +31,7 @@
     pnpm
     bun
     python3
+    go
     libpqxx
 
     # Tools
@@ -38,6 +39,7 @@
     fd
     jq
     yq
+    gopls
     nixd
     nixfmt
   ];
