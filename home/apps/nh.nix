@@ -7,6 +7,6 @@
     # keep config ready to re-enable once upstream fixes sudo/env PATH handling
     clean.enable = true;
     clean.extraArgs = "--keep-since 7d --keep 3";
-    flake = "${config.home.homeDirectory}/.config/home-manager";
+    homeFlake = "${config.home.homeDirectory}/.config/home-manager";
   };
 }
