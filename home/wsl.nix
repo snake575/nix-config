@@ -5,6 +5,9 @@
   # Uses Windows SSH and 1Password for seamless key management
   imports = [ ./linux.nix ];
 
+  # WSL uses Windows GPU drivers, so skip generic Linux GPU setup.
+  targets.genericLinux.gpu.enable = false;
+
   home.packages = with pkgs; [
     # Codex sandboxing on WSL2 needs bwrap available on PATH.
     bubblewrap
