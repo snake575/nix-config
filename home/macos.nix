@@ -5,10 +5,7 @@ let
 in
 {
   # macOS-specific configuration
-  imports = [
-    ./default.nix
-    # ./apps/ghostty.nix # ! ghostty-1.1.3 is broken, re-enable when fixed
-  ];
+  imports = [ ./default.nix ];
 
   home.homeDirectory = "/Users/snake575";
 
