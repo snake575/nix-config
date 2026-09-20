@@ -12,6 +12,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       systems,
@@ -44,5 +45,14 @@
         };
       };
       devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      # flake check does not validate homeConfigurations unless exposed as checks.
+      checks = forEachSystem (
+        pkgs:
+        lib.mapAttrs (_: home: home.activationPackage) (
+          lib.filterAttrs (
+            _: home: home.pkgs.stdenv.hostPlatform.system == pkgs.stdenv.hostPlatform.system
+          ) self.homeConfigurations
+        )
+      );
     };
 }
