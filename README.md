@@ -1,5 +1,12 @@
 # Nix configurations
 
+## Unraid development VMs
+
+See [the Ubuntu XFS-on-VDO runbook](docs/unraid-vdo-vm.md) for VM settings,
+scripted storage preparation, recovery, and boot verification. This provisions
+the Ubuntu system before applying the Home Manager configuration below.
+The first VM's installation and cold-boot verification are still pending.
+
 ## Setup
 
 Install Nix (standalone mode) with [nix-installer](https://github.com/DeterminateSystems/nix-installer)
