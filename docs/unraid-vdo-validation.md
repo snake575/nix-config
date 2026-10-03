@@ -50,6 +50,15 @@ has not been changed or validated.
 - Verified both installed initrds contain the VDO driver and LVM executable.
 - Verified GRUB uses `root=/dev/mapper/vg0-root`, EFI bootloader files exist,
   periodic trim is enabled, and the target package audit is clean.
+- Booted the installed system after a clean power-off and reconnected as
+  `snake575` using the GitHub-imported SSH key. Kernel `7.0.0-38-generic` ran
+  with XFS on the VDO root, SSH active, and no failed systemd units.
+- The user ran `verify.sh` with sudo in the installed system; every check passed.
+  Its snapshot showed 4.7 GiB used and 64 GiB available in the root filesystem,
+  and the 72 GiB VDO pool reported 6.7 GiB used, 65.3 GiB available, and 42%
+  space saving. These are guest/VDO measurements, not host NVMe allocation.
+- The ISO was still attached (but not mounted as the live system), and PCI
+  inspection still showed QXL. A boot with the ISO detached remains pending.
 
 ## Issues encountered
 
@@ -84,8 +93,9 @@ has not been changed or validated.
 - [x] Finish installing Ubuntu with the preserved VDO root.
 - [x] Confirm installed `update-grub` succeeds and the root argument matches.
 - [x] Confirm the installed initrd contains LVM and `dm_vdo`.
-- [ ] Boot from the guest disk with the ISO detached and run `verify.sh`.
-- [ ] Shut down cleanly and confirm a cold boot.
+- [x] Boot from the guest disk and run `verify.sh` with sudo.
+- [x] Shut down cleanly and confirm a cold boot from the guest disk.
+- [ ] Detach the ISO and confirm another disk boot.
 - [ ] Exercise a representative project/install/worktree workload.
 - [ ] Run the reusable bootstrap through another fresh VM installation.
 - [ ] Validate the documented expansion sequence before adding exact commands.
