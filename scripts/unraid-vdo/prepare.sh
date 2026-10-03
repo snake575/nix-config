@@ -111,5 +111,8 @@ install -m 600 "$config_file" /autoinstall.yaml
 lvs -a -o lv_name,segtype,lv_size,pool_lv,data_percent
 vdostats --human-readable
 systemctl restart snap.subiquity.subiquity-server.service
-echo "Storage preserved and installer restarted. Return to the installer and enter your identity/SSH choices."
+# The client subscribes to journal IDs belonging to the server process at startup.
+# Refresh it too, otherwise progress can keep displaying the old server's events.
+systemctl restart snap.subiquity.subiquity-service.service
+echo "Storage preserved and installer server/client restarted. Enter your identity/SSH choices."
 echo "If anything fails, inspect the existing volumes; never rerun create on a prepared disk."
