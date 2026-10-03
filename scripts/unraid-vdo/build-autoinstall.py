@@ -76,7 +76,7 @@ EOF
         "source": {"id": "ubuntu-server"},
         "timezone": timezone,
         "storage": {"config": config, "swap": {"size": 0}},
-        "packages": ["vdo", "lvm2", "xfsprogs", "dracut"],
+        "packages": ["vdo", "lvm2", "xfsprogs", "dracut", "qemu-guest-agent"],
         "late-commands": [
             ["sh", "-c", dracut_config],
             ["curtin", "in-target", "--target=/target", "--", "vgcfgbackup", "vg0"],

@@ -59,6 +59,10 @@ has not been changed or validated.
   space saving. These are guest/VDO measurements, not host NVMe allocation.
 - The ISO was still attached (but not mounted as the live system), and PCI
   inspection still showed QXL. A boot with the ISO detached remains pending.
+- Installed `qemu-guest-agent` version `1:10.2.1+ds-1ubuntu3.2` after Unraid
+  reported the agent was missing. The VirtIO agent channel was already present,
+  and the service reached `active/running`. The reusable installation now
+  includes this package by default.
 
 ## Issues encountered
 
