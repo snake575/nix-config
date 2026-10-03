@@ -148,13 +148,15 @@ script checks, not a recommendation to build an unusually small system disk.
 
 The script installs live VDO tools, creates storage, generates a configuration
 that **preserves** the prepared devices, adds target VDO/Dracut packages and boot
-configuration, and restarts the installer server. Only identity and SSH remain
+configuration, and restarts the installer server and console client. Only identity and SSH remain
 interactive. The helper does not supply credentials or configure Tailscale.
 
 Enter your chosen hostname, username, and password, and enable
 **Install OpenSSH server**. Complete the install. If the UI retains an old
 storage screen after restarting the server, do not submit that plan; restart
 the installer client or reconnect its console to load the new server state.
+The client refresh also reconnects progress logs to the new server process;
+without it, an unchanged progress screen can hide an active installation.
 The generated plan is `/autoinstall.yaml` (JSON syntax, which is valid YAML).
 Confirm it declares preserved `vg0/root` as XFS mounted at `/`.
 

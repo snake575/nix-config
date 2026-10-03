@@ -9,11 +9,12 @@ allocations or machine identities without considering the new workload.
 | Item | First-machine value |
 | --- | --- |
 | Guest name | `nomad-lab` |
-| CPU / RAM | 4 vCPUs / 8 GB |
+| CPU / RAM | 4 vCPUs / 8 GB initially; successful installation at 4 GB |
 | Firmware / disk bus | OVMF UEFI / VirtIO |
 | Guest disk | 80 GiB raw virtual disk |
 | Ubuntu ISO | Server 26.04.1 amd64 |
 | Live kernel | `7.0.0-30-generic` |
+| Installed kernels | `7.0.0-30-generic`, `7.0.0-38-generic` |
 | Installer | Subiquity 26.04.1, snap revision 7403 |
 | VDO tools | 8.3.1.1 |
 | Root filesystem | XFS, reflinks enabled |
@@ -45,6 +46,10 @@ has not been changed or validated.
 - Inspected Ubuntu GRUB and Dracut support for this layout. Root probing errors
   are tolerated by the inspected GRUB scripts; a separate `/boot` supplies the
   kernel and initrd. This is source inspection, not proof of successful boot.
+- Completed installation, security updates, and all late commands at 4 GB RAM.
+- Verified both installed initrds contain the VDO driver and LVM executable.
+- Verified GRUB uses `root=/dev/mapper/vg0-root`, EFI bootloader files exist,
+  periodic trim is enabled, and the target package audit is clean.
 
 ## Issues encountered
 
@@ -62,16 +67,23 @@ has not been changed or validated.
   packages and installer configuration; the disk storage remained intact.
 - After entering identity and SSH settings, the user observed another VM stop
   and no successful disk boot. The host's severe RAM pressure makes a host OOM
-  kill plausible, but host logs have not confirmed the cause. Disk inspection
-  must determine how much of the target install exists before any retry.
+  kill plausible, but host logs have not confirmed the cause. Read-only disk
+  inspection found partial OS extraction and no complete boot configuration.
+  The retries preserved the existing VDO storage. Offline checks found no XFS
+  errors; `/boot` journal recovery and clearing EFI's dirty bit succeeded.
+- The console client retained journal subscriptions for the previous server
+  process after the server restarted. It showed old configuration events while
+  security updates continued over SSH. Restarting only the console client
+  refreshed progress without interrupting installation. The reusable helper
+  now restarts both services when loading a new configuration.
 
 ## Remaining acceptance checks
 
 - [ ] Confirm sustainable host RAM allocations and investigate the unexpected stop.
-- [ ] Inspect the interrupted install's existing root and boot files without formatting.
-- [ ] Finish installing Ubuntu with the preserved VDO root.
-- [ ] Confirm installed `update-grub` succeeds and the root argument matches.
-- [ ] Confirm the installed initrd contains LVM and `dm_vdo`.
+- [x] Inspect the interrupted install's existing root and boot files without formatting.
+- [x] Finish installing Ubuntu with the preserved VDO root.
+- [x] Confirm installed `update-grub` succeeds and the root argument matches.
+- [x] Confirm the installed initrd contains LVM and `dm_vdo`.
 - [ ] Boot from the guest disk with the ISO detached and run `verify.sh`.
 - [ ] Shut down cleanly and confirm a cold boot.
 - [ ] Exercise a representative project/install/worktree workload.
