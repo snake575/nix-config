@@ -35,12 +35,21 @@ Do not change an existing VM's filesystem using this bootstrap.
 
 In Unraid, use these starting settings. Recheck host capacity for every VM.
 
+Before starting the guest, budget **usable host RAM** across all VMs that will
+run together, Unraid, Docker, and an operating allowance. Do not assign 8 GiB
+automatically: configured guest limits can exceed current usage and compete as
+workloads grow. A small shared host may need a 4 GiB starting allocation; test
+the installer and workload at that allocation. Extra guest RAM is useful only
+when the host can supply it. Keep several GiB available where possible and
+check Unraid's system log if a guest disappears unexpectedly; host OOM kills
+must be distinguished from guest installer/boot failures.
+
 | Setting | Value |
 | --- | --- |
 | Name | Your chosen unique VM name |
 | CPU mode | Host Passthrough |
 | vCPUs | 4; choose pinning around the host's other workloads |
-| Initial / maximum memory | 8 GB / 8 GB |
+| Initial / maximum memory | Same value, selected from the host RAM budget; 4–8 GB starting range |
 | Machine / BIOS | Q35 / OVMF (UEFI) |
 | Install ISO | Ubuntu Server 26.04.1 amd64 |
 | Primary disk | New disk sized for this VM, stored on an SSD/NVMe pool |

@@ -23,6 +23,16 @@ used and 150 GB free before further work. It also held appdata and other VMs.
 A proposed 30–40 GB operating allowance was specific to that shared small pool;
 recheck actual capacity rather than reusing the snapshot for future guests.
 
+The later RAM screenshot showed 16 GiB installed but only 14 GiB usable, 98%
+usage, and 294 MiB free (VMs 11.3 GiB, system 1.79 GiB, Docker 260 MiB).
+Stopping a Home Assistant VM configured for 4 GB reduced measured usage to 82%
+and left 2.48 GiB free. Its actual memory release was less than its configured
+limit. The planned allocations of 8 GB for this guest, 4 GB for the existing
+Ubuntu guest, and 4 GB for Home Assistant cannot all be guaranteed on 14 GiB
+usable RAM alongside the host. Rebalance allocations before running all three
+under load. Home Assistant is temporarily stopped; its permanent allocation
+has not been changed or validated.
+
 ## Completed observations
 
 - Created 1 GiB EFI, 2 GiB ext4 `/boot`, and the remaining ~77 GiB LVM partition.
@@ -50,9 +60,15 @@ recheck actual capacity rather than reusing the snapshot for future guests.
   to be missing timezone data.
 - Restarting the live ISO regenerated its SSH host keys and removed temporary
   packages and installer configuration; the disk storage remained intact.
+- After entering identity and SSH settings, the user observed another VM stop
+  and no successful disk boot. The host's severe RAM pressure makes a host OOM
+  kill plausible, but host logs have not confirmed the cause. Disk inspection
+  must determine how much of the target install exists before any retry.
 
 ## Remaining acceptance checks
 
+- [ ] Confirm sustainable host RAM allocations and investigate the unexpected stop.
+- [ ] Inspect the interrupted install's existing root and boot files without formatting.
 - [ ] Finish installing Ubuntu with the preserved VDO root.
 - [ ] Confirm installed `update-grub` succeeds and the root argument matches.
 - [ ] Confirm the installed initrd contains LVM and `dm_vdo`.
