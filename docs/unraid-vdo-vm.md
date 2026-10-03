@@ -148,7 +148,8 @@ script checks, not a recommendation to build an unusually small system disk.
 
 The script installs live VDO tools, creates storage, generates a configuration
 that **preserves** the prepared devices, adds target VDO/Dracut packages and boot
-configuration, and restarts the installer server and console client. Only identity and SSH remain
+configuration, installs the QEMU guest agent, and restarts the installer server
+and console client. Only identity and SSH remain
 interactive. The helper does not supply credentials or configure Tailscale.
 
 Enter your chosen hostname, username, and password, and enable
@@ -198,6 +199,20 @@ Home Manager currently manages user packages/settings; it does not reproduce
 this Ubuntu storage layout, Tailscale authentication, or Hermes runtime data.
 Migrate selected projects and Hermes configuration/data deliberately; do not
 copy temporary installer SSH keys into the installed system.
+
+The generated install includes `qemu-guest-agent` so Unraid can communicate
+with the guest. For an earlier VM that shows **Requires guest agent installed**,
+install and start it inside the guest:
+
+```bash
+sudo apt-get install -y qemu-guest-agent
+sudo systemctl start qemu-guest-agent
+systemctl is-active qemu-guest-agent
+```
+
+The channel `/dev/virtio-ports/org.qemu.guest_agent.0` must exist. If it is absent,
+inspect the VM definition's guest-agent channel rather than reinstalling the
+package repeatedly. Refresh the Unraid VM page after the service starts.
 
 ## Recovery without starting over
 
@@ -258,3 +273,4 @@ the current live installer or publish a disk image in Git.
 - [Linux dm-vdo documentation](https://docs.kernel.org/admin-guide/device-mapper/vdo.html): block deduplication and LZ4 compression.
 - [LVM VDO manual](https://man7.org/linux/man-pages/man7/lvmvdo.7.html): logical versus physical sizes, metadata overhead, usage statistics, and pool expansion.
 - [Dracut LVM module](https://github.com/dracut-ng/dracut-ng/blob/110/modules.d/70lvm/module-setup.sh): boot-time LVM support inspected for the Ubuntu 26.04 recipe.
+- [Unraid guest agent installation](https://docs.unraid.net/unraid-os/troubleshooting/common-issues/unclean-shutdowns/): QEMU guest agent package and service commands for Linux guests.
