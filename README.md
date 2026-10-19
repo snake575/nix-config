@@ -36,6 +36,10 @@ Copy Ghostty terminfo to a remote machine
 infocmp -x | ssh YOUR-SERVER -- tic -x -
 ```
 
+## Host notes
+
+See [WSL on NOMAD-X670](docs/wsl.md) for host integration decisions and dependencies.
+
 ## Updating
 
 Update the locked inputs, review the [Home Manager release notes](https://nix-community.github.io/home-manager/release-notes/index.html)
