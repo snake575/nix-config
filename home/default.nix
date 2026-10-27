@@ -38,7 +38,7 @@
     dnsutils
 
     # Development
-    nodejs_24
+    nodejs # follow the Nixpkgs default; projects pin their own runtimes
     python3
     go
     libpqxx
