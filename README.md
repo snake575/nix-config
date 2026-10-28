@@ -1,12 +1,5 @@
 # Nix configurations
 
-## Unraid development VMs
-
-See [the Ubuntu XFS-on-VDO runbook](docs/unraid-vdo-vm.md) for VM settings,
-scripted storage preparation, recovery, and boot verification. This provisions
-the Ubuntu system before applying the Home Manager configuration below.
-The first VM's installation and cold-boot verification are still pending.
-
 ## Setup
 
 Install Nix (standalone mode) with [nix-installer](https://github.com/DeterminateSystems/nix-installer)
@@ -45,7 +38,9 @@ infocmp -x | ssh YOUR-SERVER -- tic -x -
 
 ## Host notes
 
-See [WSL on NOMAD-X670](docs/wsl.md) for host integration decisions and dependencies.
+- [WSL on NOMAD-X670](docs/wsl.md): host integration decisions and dependencies.
+- [Ubuntu development VM on Unraid](docs/unraid-vdo-vm.md): draft XFS-on-VDO
+  provisioning and recovery runbook, applied before Home Manager setup.
 
 ## Updating
 

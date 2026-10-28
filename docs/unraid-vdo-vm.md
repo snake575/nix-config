@@ -5,13 +5,15 @@ home directories, projects, and caches all use one XFS root on an LVM-managed
 VDO pool. EFI and `/boot` remain ordinary partitions. Home Manager supplies the
 user environment after Ubuntu is installed.
 
-**Status: installation recipe in progress, not yet proven by a cold boot.**
-The procedure is reusable for new VMs within its supported environment:
-**Ubuntu Server 26.04, UEFI, and a blank VirtIO disk**. Keep that compatibility
-restriction until another release or layout has been tested. The first machine's
-observations and remaining checks are in the [validation record](unraid-vdo-validation.md).
-The reusable creation script has not yet been run through a fresh installation.
-Complete the boot checks below before treating this as the standard VM template.
+**Status: draft recipe; first-machine installation and cold boot recorded.**
+The [validation record](unraid-vdo-validation.md) documents successful installation,
+installed-system checks, and a cold boot from disk with the ISO still attached.
+An ISO-detached boot, a representative project workload, and a fresh installation
+using the reusable bootstrap remain unvalidated. Complete the remaining acceptance
+checks in that record before treating this as the standard VM template.
+
+This recipe targets **Ubuntu Server 26.04, UEFI, and a blank VirtIO disk**.
+Keep that compatibility restriction until another release or layout has been tested.
 
 Choose these values for each new VM:
 
